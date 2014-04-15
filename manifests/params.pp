@@ -13,7 +13,7 @@ class quagga::params {
   }
 
   $config_file_path = $::osfamily ? {
-    default => '/etc/quagga/quagga.conf',
+    default => '/etc/quagga/daemons',
   }
 
   $config_file_mode = $::osfamily ? {
