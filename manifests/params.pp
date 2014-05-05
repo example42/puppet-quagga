@@ -12,6 +12,11 @@ class quagga::params {
     default => 'quagga',
   }
 
+  $service_hasstatus = $::osfamily ? {
+    'Debian' => false,
+    default  => true,
+  }
+
   $config_file_path = $::osfamily ? {
     default => '/etc/quagga/daemons',
   }

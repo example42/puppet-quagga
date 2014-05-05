@@ -17,6 +17,7 @@ class quagga (
   $service_name             = $quagga::params::service_name,
   $service_ensure           = 'running',
   $service_enable           = true,
+  $service_hasstatus        = $quagga::params::service_hasstatus,
 
   $config_file_path         = $quagga::params::config_file_path,
   $config_file_owner        = $quagga::params::config_file_owner,
@@ -127,9 +128,10 @@ class quagga (
 
   if $quagga::service_name {
     service { 'quagga':
-      ensure => $quagga::manage_service_ensure,
-      name   => $quagga::service_name,
-      enable => $quagga::manage_service_enable,
+      ensure     => $quagga::manage_service_ensure,
+      name       => $quagga::service_name,
+      hasstatus  => $quagga::service_hasstatus,
+      enable     => $quagga::manage_service_enable,
     }
   }
 
